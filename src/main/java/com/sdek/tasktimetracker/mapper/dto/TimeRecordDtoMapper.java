@@ -9,6 +9,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface TimeRecordDtoMapper {
 
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "employeeId", source = "employeeId")
     TimeRecord toEntity(TimeRecordCreateRequest request, Long employeeId);
 
