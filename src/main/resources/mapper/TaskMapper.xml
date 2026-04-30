@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sdek.tasktimetracker.mapper.TaskMapper">
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO task (title, description, status)
+        VALUES (#{title}, #{description}, #{status})
+    </insert>
+
+    <select id="findById" resultType="Task">
+        SELECT id, title, description, status
+        FROM task
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateStatus">
+        UPDATE task
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+
+</mapper>

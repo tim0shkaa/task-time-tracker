@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sdek.tasktimetracker.mapper.TimeRecordMapper">
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO time_record (employee_id, task_id, start_time, end_time, description)
+        VALUES (#{employeeId}, #{taskId}, #{startTime}, #{endTime}, #{description})
+    </insert>
+
+    <select id="findByEmployeeIdAndPeriod" resultType="TimeRecord">
+        <![CDATA[
+        SELECT id, employee_id, task_id, start_time, end_time, description
+        FROM time_record
+        WHERE employee_id = #{employeeId}
+          AND start_time < #{to}
+          AND end_time > #{from}
+    ]]>
+    </select>
+
+</mapper>
