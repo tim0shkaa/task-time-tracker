@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 public class TaskUpdateStatusRequest {
 
-    @NotNull(message = "Status must not be null")
+    @NotNull(message = "Статус не должен быть пустым")
     private TaskStatus status;
 }
